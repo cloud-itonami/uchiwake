@@ -1,7 +1,13 @@
 # uchiwake 内訳
 
 **World product bill-of-materials / GTIN knowledge graph** — the product-level layer beneath
-kabuto 兜. Tier-B religious-corp actor, R0 design-only. ADR-2606081800.
+kabuto 兜. Tier-B supply-chain actor, R0 design-only. ADR-2606081800.
+
+The executable supply-chain classification actor is owned by `cloud-itonami/uchiwake`. The
+reusable GTIN substrate remains separate in `cloud-itonami/gtin`, and registry orchestration lives
+in `cloud-itonami/action-gtin-registry`. Existing `did:web:*.etzhayyim.com`, AT Protocol, and
+Radicle identities remain compatibility identifiers; this repository move preserves actor
+continuity.
 
 kabuto wires **company → company** supply edges. uchiwake goes one level **down** — to the
 **trade item itself**, keyed on the GS1 **GTIN**, decomposed into its bill of materials

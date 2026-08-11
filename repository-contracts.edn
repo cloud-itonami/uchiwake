@@ -2,4 +2,4 @@
  :wire/root "wire"
  :wire/formats #{"json" "jsonld" "bpmn"}
  :forbidden/extensions #{"go" "sh"}
- :standalone/path "orgs/etzhayyim/com-etzhayyim-uchiwake"}
+ :standalone/path "orgs/cloud-itonami/uchiwake"}

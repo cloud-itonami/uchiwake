@@ -1,0 +1,6 @@
+{:repo/id "cloud-itonami/uchiwake"
+ :repo/plane :role
+ :repo/role :product-bom-classification-actor
+ :repo/boundary {:registry-actor "cloud-itonami/action-gtin-registry"
+                 :gtin-substrate "cloud-itonami/gtin"
+                 :compatibility-repository "etzhayyim/com-etzhayyim-uchiwake"}}
