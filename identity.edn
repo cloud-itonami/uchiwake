@@ -1,5 +1,6 @@
-{:repository/id "com-etzhayyim-uchiwake"
+{:repository/id "cloud-itonami/uchiwake"
  :actor/id "uchiwake"
+ :repository/also-known-as ["https://github.com/etzhayyim/com-etzhayyim-uchiwake"]
  :layout :west-flat-multirepo
  :canonical-format :edn
  :wire-formats #{:json :json-ld :bpmn}}
