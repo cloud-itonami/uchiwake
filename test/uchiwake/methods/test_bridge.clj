@@ -133,3 +133,48 @@
                  (catch clojure.lang.ExceptionInfo ex ex))]
       (is (some? e) "push must throw without the live gate")
       (is (= :G7 (:gate (ex-data e)))))))
+
+;; ── internal-trust header (ADR-2608124000, "clients first") ──────────────────
+;; kotoba-server's require_internal_trust gate returns success while
+;; KOTOBA_INTERNAL_SECRET is unset, and it is unset across the fleet — so sending
+;; this header today changes nothing on the wire. These tests pin the shape NOW
+;; so that arming the server later is a one-variable decision rather than a
+;; fleet-wide outage. Values are obviously synthetic; no real secret is used.
+;;
+;; NOTE: this bridge has NO Authorization header and NO host allowlist, so the
+;; usual positive controls do not exist here. What IS asserted is that the G7
+;; live gate still refuses, which is uchiwake's actual pre-existing control.
+(def ^:private synthetic-trust "synthetic-internal-trust-not-a-real-secret")
+
+(deftest internal-trust-header-present-when-configured
+  (let [h (b/request-headers synthetic-trust)]
+    (is (= synthetic-trust (get h "x-internal-trust"))
+        "the configured value is sent verbatim")
+    (is (= "application/json" (get h "Content-Type")) "Content-Type untouched")))
+
+(deftest internal-trust-header-absent-when-unconfigured
+  (doseq [trust [nil "" "   "]]
+    (let [h (b/request-headers trust)]
+      (is (not (contains? h "x-internal-trust"))
+          (str "omitted entirely for " (pr-str trust) " — never an empty string"))))
+  ;; the no-op property: unconfigured produces exactly the historical header map
+  (is (= {"Content-Type" "application/json"} (b/request-headers nil)))
+  ;; and this bridge still sends no bearer, with or without a trust secret
+  (is (not (contains? (b/request-headers synthetic-trust) "Authorization"))))
+
+(deftest internal-trust-absence-is-reported-not-silent
+  (is (= "x-internal-trust" b/internal-trust-header))
+  (is (= "KOTOBA_INTERNAL_SECRET" b/internal-trust-env)
+      "the same variable the server and the Cloudflare gateway read")
+  (with-redefs [b/internal-trust (constantly nil)]
+    (is (= :unconfigured (b/internal-trust-status))))
+  (with-redefs [b/internal-trust (constantly synthetic-trust)]
+    (is (= :configured (b/internal-trust-status)))))
+
+(deftest g7-gate-still-refuses-with-trust-configured
+  ;; positive control — a configured secret is not a live-gate bypass
+  (with-redefs [b/internal-trust (constantly synthetic-trust)]
+    (let [e (try (b/push "uchiwake" "http://127.0.0.1:9/none" "/tmp/nonexistent.edn") nil
+                 (catch clojure.lang.ExceptionInfo ex ex))]
+      (is (some? e))
+      (is (= :G7 (:gate (ex-data e)))))))
