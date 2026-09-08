@@ -15,7 +15,7 @@
 
   House style (lineage): Python ':…' keyword strings stay strings; string-keyed maps; pure
   fns; file/network I/O only at #?(:clj) edges. round(float(pct), 2) mirrors Python HALF_EVEN."
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             [uchiwake.methods.uchiwake-edn :as uedn]))
 
 ;; ── Python-faithful numeric rounding ─────────────────────────────────────────
@@ -45,7 +45,7 @@
 (defn- slug
   "re.sub(r'[^a-z0-9]+', '-', str(s).lower().split(':')[-1]).strip('-') or 'unknown'"
   [s]
-  (let [last- (last (str/split (str/lower-case (str s)) #":" -1))
+  (let [last- (last (str/split (str/lower (str s)) #":" -1))
         slugged (-> (str/replace last- #"[^a-z0-9]+" "-")
                     (str/replace #"^-+" "")
                     (str/replace #"-+$" ""))]

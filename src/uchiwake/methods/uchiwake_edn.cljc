@@ -10,7 +10,7 @@
   GTIN (G5/G1, do-not-weaken): `normalize-gtin` left-zero-pads to GTIN-14;
   `gtin-check-digit-ok` reproduces the GS1 mod-10 weighted (3,1,3,1…) checksum EXACTLY —
   rightmost body digit weighted ×3, alternating. Portable .cljc."
-  (:require [clojure.string :as str]))
+  (:require [kotoba.lang.text :as str]))
 
 ;; ── minimal EDN reader (subset) ──────────────────────────────────────────────
 ;; _TOK = re.compile(r'[\s,]+|;[^\n]*|(\[|\]|\{|\}|"(?:\\.|[^"\\])*"|[^\s,\[\]{}]+)')

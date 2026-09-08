@@ -11,7 +11,7 @@
   pattern). assertAlmostEqual → (is (== … …)) on the rounded double. The __main__ demo is
   omitted (a non-pure entry point)."
   (:require [clojure.test :refer [deftest is testing run-tests]]
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [clojure.java.io :as io]
             [uchiwake.methods.uchiwake-edn :as uedn]
             [uchiwake.methods.adapters.openfoodfacts :as off]))

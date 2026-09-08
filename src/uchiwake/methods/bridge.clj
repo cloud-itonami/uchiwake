@@ -12,7 +12,7 @@
   cursor/replay logic is pure and runs offline (--status). no-server-key (unsigned public-DID
   operator bearer, G12). Each push appends ONE :bridge/* checkpoint (the highest local tx-id sent);
   on replay the LAST checkpoint wins. Every remote tx carries :uchiwake.tx/* provenance."
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             [clojure.java.io :as io]
             [cheshire.core :as json]
             [uchiwake.methods.uchiwake-edn :as uedn]

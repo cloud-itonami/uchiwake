@@ -16,7 +16,7 @@
   (:require [uchiwake.methods.bridge :as b]
             [uchiwake.methods.kotoba :as k]
             [clojure.java.io :as io]
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [clojure.test :refer [deftest is run-tests]]))
 
 ;; ── independent base32 (RFC4648 lowercase, no pad) decoder + sha256, the oracle ──

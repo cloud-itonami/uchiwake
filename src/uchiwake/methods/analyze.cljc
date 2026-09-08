@@ -27,7 +27,7 @@
   over the seed in edge order) so the report + derived datoms are stable and reproducible; the
   byte-parity oracle (tools/parity_oracle.py) feeds analyze.py's own functions that same
   deterministic order so both sides agree byte-for-byte."
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             [uchiwake.methods.uchiwake-edn :as edn]))
 
 ;; ── Python-faithful numeric formatting ───────────────────────────────────────
@@ -258,7 +258,7 @@
   (str k " "
        (cond
          (and (string? v) (not (str/starts-with? v ":"))) (edn/edn-str v)
-         (boolean? v) (str/lower-case (str v))
+         (boolean? v) (str/lower (str v))
          (string? v) v
          (double? v) (py-float-str v)
          :else (str v))))
