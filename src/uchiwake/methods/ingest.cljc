@@ -15,7 +15,7 @@
 
   House style (lineage): ':…' keyword strings stay strings; string-keyed maps; pure fns;
   file/network I/O behind #?(:clj) edges (json.loads / file globbing / EDN text splicing)."
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             [uchiwake.methods.uchiwake-edn :as edn]
             [uchiwake.methods.adapters.openfoodfacts :as off]))
 

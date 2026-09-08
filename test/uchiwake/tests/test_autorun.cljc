@@ -11,7 +11,7 @@
   `cid-byte-parity-with-python` is retained as a frozen golden-value regression guard (the value the
   removed Python reference produced) per the D2.1 byte-parity bar."
   (:require [clojure.test :refer [deftest is testing run-tests]]
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [clojure.java.io :as io]
             [uchiwake.methods.autorun :as autorun]
             [uchiwake.methods.kotoba :as k]

@@ -20,7 +20,7 @@
 
   EAVT = [op entity attribute value]; op is :db/add only (append-only — no :db/retract).
   Deterministic: the caller supplies tx-id + as-of (no wall clock) → resume-safe."
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             [uchiwake.methods.uchiwake-edn :as edn]
             #?(:clj [clojure.java.io :as io])))
 

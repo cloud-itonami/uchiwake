@@ -13,7 +13,7 @@
 
   House style (lineage): ':…' keyword strings stay strings; string-keyed maps; pure fns;
   file I/O only at #?(:clj) edges. round() = BigDecimal HALF_EVEN on the exact double."
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             [clojure.set]
             [uchiwake.methods.uchiwake-edn :as edn]))
 

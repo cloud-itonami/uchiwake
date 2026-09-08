@@ -13,7 +13,7 @@
   and the whole test_off_adapter.py suite. They are autorun/crosscheck-dependent and are noted
   in the port report, not silently dropped."
   (:require [clojure.test :refer [deftest is testing run-tests]]
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [clojure.set]
             [clojure.java.io :as io]
             [uchiwake.methods.uchiwake-edn :as uedn]

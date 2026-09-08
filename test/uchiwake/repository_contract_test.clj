@@ -1,7 +1,7 @@
 (ns uchiwake.repository-contract-test
   (:require [clojure.edn :as edn]
             [clojure.java.io :as io]
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [clojure.test :refer [deftest is]]))
 
 (defn files [] (filter #(.isFile %) (file-seq (io/file "."))))
