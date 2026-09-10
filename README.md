@@ -48,7 +48,7 @@ python3 -m unittest discover -s tests -p 'test_*.py' -v   # 27 tests
 
 ### Bulk-ingest adapters (the worldwide-coverage path)
 
-`src/uchiwake/src/uchiwake/methods/adapters/openfoodfacts.cljc` is the first concrete bulk normalizer: it turns
+`src/uchiwake/src/uchiwake/methods/adapters/openfoodfacts.kotoba` is the first concrete bulk normalizer: it turns
 [Open Food Facts](https://world.openfoodfacts.org) records (a CC-BY-SA open dataset of ~3M+ real
 food/beverage trade items, each with a real GTIN + brand + ingredient list) into uchiwake
 `:product` / `:material` / `:bom.edge` datoms — GTIN-validated (mod-10), ingredient % → bounded

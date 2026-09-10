@@ -58,22 +58,22 @@
 
 ## Cells
 
-- `cell:uchiwake.ingest` → `src/uchiwake/methods/ingest.cljc` — public product source → kotoba EAVT bridge
+- `cell:uchiwake.ingest` → `src/uchiwake/methods/ingest.kotoba` — public product source → kotoba EAVT bridge
   (offline default; live G7-gated). Documents the GS1 GDSN / GLEIF RR / Open Product Data path.
   Validates the GS1 check digit before admitting any product datom.
-- `cell:uchiwake.analyze` → `src/uchiwake/methods/analyze.cljc` (stdlib). recursive BOM material-closure →
+- `cell:uchiwake.analyze` → `src/uchiwake/methods/analyze.kotoba` (stdlib). recursive BOM material-closure →
   material dependence → processing-jurisdiction load → ultimate-parent rollup (子会社) →
   single-source/high-criticality edges. Aggregate-first. Idempotent.
-- `cell:uchiwake.crosscheck` → `src/uchiwake/methods/crosscheck.cljc` (stdlib). resolves every uchiwake company
+- `cell:uchiwake.crosscheck` → `src/uchiwake/methods/crosscheck.kotoba` (stdlib). resolves every uchiwake company
   reference (brand-owner/supplier/operator/carrier/ownership) against kabuto's ingested company
   universe → MEASURED linkage % + 子会社 rollup recovery + honest not-yet-ingested gap. Measures
   cross-actor supply-chain integration; does not assert it.
-- `cell:uchiwake.autorun` → `src/uchiwake/methods/autorun.cljc` (+ `src/uchiwake/methods/kotoba.cljc`) — **clj-native SSoT**
+- `cell:uchiwake.autorun` → `src/uchiwake/methods/autorun.kotoba` (+ `src/uchiwake/methods/kotoba.kotoba`) — **clj-native SSoT**
   (ADR-2606142300 D1: new logic-core is authored in Clojure, no Python twin). The autonomous
   Murakumo-fleet heartbeat. Each cycle observes the OFFLINE merged product graph → recursive BOM
   material-closure → material dependence + processing-jurisdiction load + ultimate-parent rollup
   (子会社) → **persists a content-addressed transaction** (graph datoms + derived `:concentration`)
-  to the append-only **local** kotoba Datom log (`src/uchiwake/methods/kotoba.cljc`), linking the previous tx's
+  to the append-only **local** kotoba Datom log (`src/uchiwake/methods/kotoba.kotoba`), linking the previous tx's
   CID into a verifiable commit-DAG. Deterministic / resume-safe (cycle drives tx-id + as-of → same
   CIDs; derived sorted by id); NO external I/O. **G2/G4/G5 hold by construction**: only public
   trade-item facts + transparent concentration are representable — every derived `:concentration/*`
@@ -82,7 +82,7 @@
   push stay Council + operator gated (G7). Invariants guarded by `tests/test_autorun.cljc`
   (commit-DAG verify, tamper-detect, determinism, append-only, G5 derived-:synthesized, G2/G4
   not-target/not-recipe, exactly-once cursor, G7 ingest+push gate-refusal, frozen golden CIDs).
-- `cell:uchiwake.bridge` → `src/uchiwake/methods/bridge.clj` — **clj-native SSoT**. LOCAL→LIVE kotoba-node push
+- `cell:uchiwake.bridge` → `src/uchiwake/methods/bridge.kotoba` — **clj-native SSoT**. LOCAL→LIVE kotoba-node push
   leg (ibuki pattern): replays an exactly-once `:bridge/*` cursor off the local log, pushes only
   un-pushed heartbeat txs to the live `datomic.transact` node with `:uchiwake.tx/*` provenance,
   then appends ONE checkpoint. Gated by `UCHIWAKE_KOTOBA_LIVE=1` (Council + operator); the
