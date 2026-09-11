@@ -39,10 +39,10 @@ and Council + operator gated (G7).
 ## Run
 
 ```bash
-bb -m uchiwake.methods.ingest            # offline bridge + seed → products.merged (live = G7-gated)
-bb -m uchiwake.methods.analyze            # resilience report + derived concentration datoms
-bb -m uchiwake.methods.crosscheck         # measured uchiwake ⇄ kabuto coverage linkage
-bb -m uchiwake.methods.adapters.openfoodfacts   # bulk-ingest normalizer: OFF records → datoms
+kbb -m uchiwake.methods.ingest            # offline bridge + seed → products.merged (live = G7-gated)
+kbb -m uchiwake.methods.analyze            # resilience report + derived concentration datoms
+kbb -m uchiwake.methods.crosscheck         # measured uchiwake ⇄ kabuto coverage linkage
+kbb -m uchiwake.methods.adapters.openfoodfacts   # bulk-ingest normalizer: OFF records → datoms
 python3 -m unittest discover -s tests -p 'test_*.py' -v   # 27 tests
 ```
 

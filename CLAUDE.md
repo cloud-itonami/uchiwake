@@ -105,19 +105,19 @@ reproduce dict insertion order (CID parity).
 
 ```bash
 cd .
-bb -m uchiwake.methods.ingest            # offline: bridge wire/data/*.json + seed (cljc-native; ADR-2606261200)
-bb -m uchiwake.methods.analyze            # → out/intel-report.md + out/product-criticality.kotoba.edn
+kbb -m uchiwake.methods.ingest            # offline: bridge wire/data/*.json + seed (cljc-native; ADR-2606261200)
+kbb -m uchiwake.methods.analyze            # → out/intel-report.md + out/product-criticality.kotoba.edn
 python3 -m unittest tests.test_uchiwake -v   # 21 tests (twins: ingest/analyze/crosscheck)
 # live ingest (G7-gated, twin):
-UCHIWAKE_OPERATOR_GATE=1 UCHIWAKE_OPERATOR_GATE=1 bb -m uchiwake.methods.ingest --live --gtin 3017620422003  # OFF fetch (Nutella)
+UCHIWAKE_OPERATOR_GATE=1 UCHIWAKE_OPERATOR_GATE=1 kbb -m uchiwake.methods.ingest --live --gtin 3017620422003  # OFF fetch (Nutella)
 
 # clj-native heartbeat + bridge (SSoT — Clojure, no Python twin):
-bb -e "(require 'uchiwake.methods.autorun)(apply uchiwake.methods.autorun/-main [\"--cycles\" \"3\" \"--fresh\"])"
-bb -e "(require 'uchiwake.methods.bridge)(apply uchiwake.methods.bridge/-main [\"--status\"])"
-bb -e "(require 'uchiwake.tests.test-autorun 'clojure.test)(clojure.test/run-tests 'uchiwake.tests.test-autorun)"
+kbb -e "(require 'uchiwake.methods.autorun)(apply uchiwake.methods.autorun/-main [\"--cycles\" \"3\" \"--fresh\"])"
+kbb -e "(require 'uchiwake.methods.bridge)(apply uchiwake.methods.bridge/-main [\"--status\"])"
+kbb -e "(require 'uchiwake.tests.test-autorun 'clojure.test)(clojure.test/run-tests 'uchiwake.tests.test-autorun)"
 ```
 
-`bb -m uchiwake.methods.analyze` with no argument runs the **seed** graph alone.
+`kbb -m uchiwake.methods.analyze` with no argument runs the **seed** graph alone.
 
 ## Honesty (R0)
 

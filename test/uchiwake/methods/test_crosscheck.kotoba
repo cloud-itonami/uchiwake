@@ -1,5 +1,5 @@
 ;; test_crosscheck.clj — uchiwake⇄kabuto coverage-linkage crosscheck, byte-parity with crosscheck.py.
-;; Auto-discovered by `bb test:actors` (path-matching ns). ADR-2606142300.
+;; Auto-discovered by `kbb -M:test:actors` (path-matching ns). ADR-2606142300.
 (ns uchiwake.methods.test-crosscheck
   (:require [clojure.test :refer [deftest is testing run-tests]]
             [clojure.java.io :as io]

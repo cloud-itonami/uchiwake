@@ -1,6 +1,6 @@
-#!/usr/bin/env bb
+#!/usr/bin/env kbb
 ;; uchiwake 内訳 — gold-standard parity validation of the Python-round() mirror.
-;; Run:  bb test/uchiwake/methods/test_py_round.cljc
+;; Run:  kbb test/uchiwake/methods/test_py_round.cljk
 (ns uchiwake.methods.test-py-round
   "Gold-standard parity validation of py-round / py-round-2 — uchiwake's CPython round() mirror used
   to round BOM quantities and measurements. Pins it against CPython's round(x, n): banker's rounding
