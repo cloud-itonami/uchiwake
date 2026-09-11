@@ -1,4 +1,4 @@
-#!/usr/bin/env bb
+#!/usr/bin/env kbb
 ;; Offline coverage + content-address parity for the uchiwake LOCAL→LIVE bridge.
 (ns uchiwake.methods.test-bridge
   "test_bridge.clj — uchiwake kotoba-bridge offline invariants (ADR-2606081800 / 2606142300).
@@ -12,7 +12,7 @@
   be [0x01 0x71 0x12 0x20] ++ sha256(name) — i.e. a CORRECT CIDv1 (dag-cbor, sha2-256 multihash),
   not merely self-consistent. Pinned literals additionally prove cross-process reproducibility.
 
-  Run:  bb test/uchiwake/methods/test_bridge.clj"
+  Run:  kbb test/uchiwake/methods/test_bridge.cljk"
   (:require [uchiwake.methods.bridge :as b]
             [uchiwake.methods.kotoba :as k]
             [clojure.java.io :as io]

@@ -1,4 +1,4 @@
-#!/usr/bin/env nbb
+#!/usr/bin/env kbb
 ;; self-publish wrapper → shared kototama publish.cljs (ADR-2607173000)
 (def path (js/require "node:path"))
 (def cp (js/require "node:child_process"))
