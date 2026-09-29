@@ -65,4 +65,4 @@ decompositions, GS1 check-digit-validated GTINs, bounded criticality estimates â
 authoritative recipe or a contract figure. Company refs wire to REAL kabuto companies;
 `crosscheck.py` measures linkage (80.8%) + reverse coverage (6.4% of kabuto's supply-chain
 companies have product detail) and reports the not-yet-ingested gap with a prioritized worklist.
-See `CLAUDE.md` for the full gate list.
+See `AGENTS.md` for the full gate list.
