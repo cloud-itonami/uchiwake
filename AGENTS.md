@@ -1,7 +1,7 @@
 # uchiwake 内訳 — agent reference
 
 > World product bill-of-materials / GTIN knowledge graph. Tier-B, R0 design-only. ADR-2606081800.
-> The product-level layer beneath kabuto 兜. Read the repo-root `CLAUDE.md` first; this file only
+> The product-level layer beneath kabuto 兜. Read the repo-root `AGENTS.md` first; this file only
 > adds actor-local rules.
 
 ## Identity
